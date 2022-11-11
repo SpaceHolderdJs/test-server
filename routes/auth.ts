@@ -14,7 +14,10 @@ authRouter.post("/signIn", async (req, res) => {
 
     if (!user || !password) return res.sendStatus(404);
 
-    const isPasswordsMatching = await bcrypt.compare(password, user.password!);
+    const isPasswordsMatching: boolean = await bcrypt.compare(
+      password,
+      user.password!
+    );
 
     if (!isPasswordsMatching) return res.sendStatus(404);
 
